@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--mybatis:scan会将包下所有的借口当做mapper配置，之后可以自动引入mapper类-->
+    <!--<mybatis:scan base-package="com.valueplus.ormappers"/>-->
+
+    <!--扫描包下的java文件，所有有注解的类都会被注册为spring的bean-->
+    <context:component-scan base-package="com.valueplus.toolsmgt"/>
+
+    <!--加载数据源参数-->
+    <context:property-override location="classpath:properties/db.properties"/>
+
+    <!--配置c3p0数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"/>
+
+    <!--整合mybatis和spring的bean-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" p:dataSource-ref="dataSource">
+        <!--<property name="mapperLocations" value="classpath*:com/valueplus/toolsmgt/ormappers/*Mapper.xml"/>-->
+        <property name="mapperLocations" value="classpath:ormappers/*Mapper.xml"/>
+    </bean>
+
+    <!--配置接口自动注入，类名小写-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.**.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+    <!--JDBC事务管理器-->
+    <!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="dataSource"/>-->
+
+    <!--启动支持注解方式的事务管理-->
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
+</beans>
