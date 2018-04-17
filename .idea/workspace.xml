@@ -6,7 +6,49 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6c355e8-a318-4265-9452-0cb704f3e9b4" name="Default" comment="" />
+    <list default="true" id="d6c355e8-a318-4265-9452-0cb704f3e9b4" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/toolsmgt_war_exploded.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_c3p0_0_9_5_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_mchange_commons_java_0_2_11.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_6_0_6.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_4_6.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_3_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_0_5_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_0_5_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_0_5_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_0_5_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_0_5_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_0_5_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_0_5_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_0_5_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_0_5_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_0_5_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/pom.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/java/com/valueplus/toolsmgt/controller/LoginController.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/java/com/valueplus/toolsmgt/dao/UserDao.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/java/com/valueplus/toolsmgt/domain/User.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/java/com/valueplus/toolsmgt/service/UserService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/java/com/valueplus/toolsmgt/service/impl/UserServiceImpl.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/resources/ormappers/UserMapper.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/resources/properties/db.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/resources/properties/log4j.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/webapp/WEB-INF/applicationContext.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/webapp/WEB-INF/dispatcher-servlet.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/webapp/WEB-INF/index.jsp" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/webapp/WEB-INF/web.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/src/main/webapp/login.jsp" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/toolsmgt/toolsmgt.iml" />
+    </list>
     <ignored path="$PROJECT_DIR$/toolsmgt/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -482,12 +524,12 @@
       <workItem from="1523583722693" duration="6990000" />
       <workItem from="1523602181883" duration="1553000" />
       <workItem from="1523603848327" duration="4784000" />
-      <workItem from="1523927824061" duration="4442000" />
+      <workItem from="1523927824061" duration="4565000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31572000" />
+    <option name="totallyTimeSpent" value="31695000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
