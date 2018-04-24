@@ -117,7 +117,7 @@ Maven其实是一系列plugin(插件)的集合。每一个plugin包含一个或�
 > $ mvn dependency:copy-dependency
 
 该命令仅执行dependency plugin中的copy-dependency goal。该命令表示复制当前项目所有的依赖到输出路径中。
-对于一个由Maven管理的项目，在该项目的根目录下会存在一个名为"pom.xml"的配置文件，该配置文件包含了用户对默认配置信息的修改。当用户执行Maven某一个phase或者一个goal时，Maven将该配置文件中未提及的配置信息从默认配置文件中inherit下来，然后根据合并后的配置信息进行相应的操作。从GitHub上面Clone下来的项目中，toolsmgt\pom.xml就是该Maven项目的配置文件。
+对于一个由Maven管理的项目，在该项目的根目录下会存在一个名为"pom.xml"的配置文件，该配置文件包含了用户对默认配置信息的修改。当用户执行Maven某一个phase或者一个goal时，Maven将该配置文件中未提及的配置信息从默认配置文件中inherit下来，然后根据合并后的配置信息进行相应的操作。从GitHub上面Clone下来的项目中，toolsmgt\pom.xml就是该Maven项目的配置文件。<br/>
 [Maven官方用户指南](https://maven.apache.org/guides/index.html)<br/>
 [POM文件用户文档](https://maven.apache.org/pom.html)<br/>
 [Maven官方网站](https://maven.apache.org/)<br/>
