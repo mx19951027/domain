@@ -140,4 +140,4 @@ Intellij IDEA中的项目结构名称和Eclipse项目结构名称略有不同，
 同Eclipse一样，在Intellij IDEA中，一个Project下可以包含零个或者多个Module，Module之间既可以相互独立也可以相互依赖。对于本项目在GitHub上面存放的其实是一个Module而不是Project。
 
 将项目git clone下来之后，打开Intellij IDEA，依次点击菜单栏"File"->"New"->"Project..."，在左侧栏选择"Empty Project"，点击下方按钮"Next"。在"Project Location"一栏的右侧点击"..."按钮选择Project的目录，浏览到git clone下目录"toolsmgt-dev\"，点击toolsmgt-dev目录后确定，然后点击下方"Finish"按钮完成Project的创建。此时在git clone的目录下创建了一个空的Intellij IDEA的Project，然后我们需要把Module添加到当前的空Project中。依次点击菜单栏"File"->"New"->"Module from Existing Sources..."，浏览到toolsmgt-dev\toolsmgt\，选择toolsmgt.iml文件确定即可。此时Intellij IDEA会自动扫描该目录下的文件。在Intellij IDEA中按下"Alt + 1"组合键或者点击左边栏中的"Project"打开Project窗口，右键选择"pom.xml"文件，点击"Add as Maven Project"将该项目识别为Maven项目。此时GitHub上面的项目已经成功导入并集成到Intellij IDEA的开发环境中。
-Intellij IDEA中已经集成了相关的Git, Maven的图形化界面与工具。因此，您即可以使用终端如cmd, bash也可以使用集成的图形化工具进行工作。
+Intellij IDEA中已经集成了相关的Git, Maven的图形化界面与工具。因此，您既可以使用终端如cmd, bash也可以使用集成的图形化工具进行工作。
