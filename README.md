@@ -5,7 +5,8 @@ Editted by Ivan Shi on Apr 17 2018 11:48
 Email: shiyifan00@live.cn
 
 ## 开发环境目标
-| | |
+
+| Project Facet | Choice |
 | :------------ | :------------ |
 | Source Version Control  | Git (deposited on GitHub) ver.2.7.4+  |
 | Web Dev. Framework  |  Spring(IoC Container) ver.5.0.5+<br/>SpringMVC(MVC Framework) ver.5.0.5+<br/>MyBatis(Data Persistence) ver.3.4.6+ |
@@ -13,6 +14,7 @@ Email: shiyifan00@live.cn
 | Project Build Automation Tool  | Maven ver.3.3.9+  |
 | Integrated Dev. Environment  | Intellij IDEA Ultimate ver.2018.1.1+  |
 | Web Service Framework  | Apache CXF ver.3.2.4+ |
+
 ### Source Version Control
 #### Git
 Git是一个分布式的版本控制系统，能够完全追踪文本变化并能够根据更改历史进行回溯。另外，可以通过Git的"Merge"(合并)功能将两个文本文件的内容进行合并以达到多人协同开发的效果。Git能够管理并存储所有用户每一次增加、修改、删除、合并等操作之后的文件快照并串联为一个线性记录。然后可以依据该线性记录进行版本变更。
@@ -126,17 +128,12 @@ Maven其实是一系列plugin(插件)的集合。每一个plugin包含一个或�
 选择下载"Ultimate"版本，下载后安装时可选择默认插件配置即可。
 安装之后[点击此处](https://blog.csdn.net/qq_35246620/article/details/79050895)网址进行破解激活
 Intellij IDEA中的项目结构名称和Eclipse项目结构名称略有不同，大体的对应关系如下:
-```text
-+---------------+-------------+
-|               |             |
-| Intellij IDEA |   Eclipse   |
-|               |             |
-+-----------------------------+
-|    Project    |  Workspace  |
-+-----------------------------+
-|    Module     |   Project   |
-+---------------+-------------+
-```
+
+| Intellij IDEA | Eclipse |
+| --- | --- |
+| Project | Workspace |
+| Module | Project |
+
 同Eclipse一样，在Intellij IDEA中，一个Project下可以包含零个或者多个Module，Module之间既可以相互独立也可以相互依赖。对于本项目在GitHub上面存放的其实是一个Module而不是Project。
 
 将项目git clone下来之后，打开Intellij IDEA，依次点击菜单栏"File"->"New"->"Project..."，在左侧栏选择"Empty Project"，点击下方按钮"Next"。在"Project Location"一栏的右侧点击"..."按钮选择Project的目录，浏览到git clone下目录"toolsmgt-dev\"，点击toolsmgt-dev目录后确定，然后点击下方"Finish"按钮完成Project的创建。此时在git clone的目录下创建了一个空的Intellij IDEA的Project，然后我们需要把Module添加到当前的空Project中。依次点击菜单栏"File"->"New"->"Module from Existing Sources..."，浏览到toolsmgt-dev\toolsmgt\，选择toolsmgt.iml文件确定即可。此时Intellij IDEA会自动扫描该目录下的文件。在Intellij IDEA中按下"Alt + 1"组合键或者点击左边栏中的"Project"打开Project窗口，右键选择"pom.xml"文件，点击"Add as Maven Project"将该项目识别为Maven项目。此时GitHub上面的项目已经成功导入并集成到Intellij IDEA的开发环境中。
@@ -297,21 +294,25 @@ HelloWorld.jsp页面：
 地址栏中在项目的根路径下拼接/spring/test，直接转发到HelloWorld.jsp页面，并且页面上将显示"Hello World!"信息。
 
 在实际开发中，每个Controller中的每个方法都属于一个独立的控制器，他们分别调用各自的业务层逻辑代码，为视图层提供数据。此处只是为MVC的基本使用做了简单介绍，但MVC能做的远不止这些，有关其他注解请自行查阅联系，包括：
-|||
-|--|--|
-|@ResponseBody|解决json格式数据的请求相应处理|
-|@RequestParam|解决表单传参的参数对应问题|
-|@PathVariable|解析占位符|
-|@SessionAttributes|存储一次单独会话信息|
-|@ModelAttribute|将请求参数绑定到Model对象|
+
+| 注解 | 作用 |
+|---|---|
+| @ResponseBody | 解决json格式数据的请求相应处理 |
+| @RequestParam | 解决表单传参的参数对应问题 |
+| @PathVariable | 解析占位符 |
+| @SessionAttributes | 存储一次单独会话信息 |
+| @ModelAttribute | 将请求参数绑定到Model对象 |
+
 #### Mybatis简介
 什么是ORM？
 ORM全称Object/Relation Mapping,即对象/关系数据库映射。ORM框架提供了一系类规范，用于解决OOP和RDB发展不同步的中间解决方案，简单而言，ORM框架就是讨论如何将数据库的表结构数据映射称Java中的一个普通的Java文件，并用Java的面向对象操作方法操作数据库的CRUD；整个映射的关系对应为：
-|  |  |
-|--|--|
-|表结构|Java类|
-|表字段|Java类成员变量|
-|表记录|Java类实例|
+
+| Relation | Object |
+|---|---|
+| 表结构 | Java类 |
+| 表字段 | Java类成员变量 |
+| 表记录 | Java类实例 |
+
 何为持久层框架？
 持久，即存储数据的持久性，数据的存储往往不直接存储在内存，而是将数据存储在硬盘、磁带等媒体介质，需要时再从这些介质中调用。持久层可以看做数据库、硬盘这种可以持久存储数据的媒体介质；持久化就是讨论如何将数据存储到这些介质。Java 程序员为了操作数据库，最开始是使用JDBC来进行的，但是这种方式开发效率低，要写一堆重复代码，加上关系数据库和对象本身存在所谓的阻抗不匹配，所以导致项目冗杂、难以维护等问题，于是持久层框架产生，就是为了解决如何用面向对象的方法操纵数据库，并且可以将面向对象操作后的结果持久化存储到这些持久化介质的问题。
 MyBatis是一个支持普通SQL查询、存储过程和高级映射的优秀持久层框架。MyBatis去掉了几乎所有的JDBC代码和参数的手工设置以及对结果集的检测封装。MyBatis可以使用简单的XML或注解进行配置和原始映射，已将接口和Java的POJO映射成数据库的记录。
@@ -320,12 +321,14 @@ MyBatis作为持久层框架，其主要思想是将程序中大量的SQL语句�
 配置使用MyBatis
 1.MyBatis的数据库操作
 首先创建数据库mybatis，在数据库中创建tb_user表，表信息如下：
-||||
-|--|--|--|
-|ID|INT|自增|
-|NAME|VARCHAR|DEFAULT NULL|
-|SEX|CHAR|DEFAULT NULL|
-|AGE|INT|DEFAULT NULL|
+
+| Column | DataType | IsNULL |
+| :--- | :--- | :--- |
+| ID | INT | 自增 |
+| NAME | VARCHAR | DEFAULT NULL |
+| SEX | CHAR | DEFAULT NULL |
+| AGE | INT | DEFAULT NULL |
+
 通过MyBatis，所有对数据库的CRUD操作都将转换成对POJO的操作，下面是tb_user表映射的POJO对象结构：
 ```java
 package com.valueplus.domain;
