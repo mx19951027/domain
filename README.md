@@ -205,7 +205,7 @@ Request |  | Response           +--------------+
 #### Spring MVC Web应用部署
  1. 使用DispatcherServlet需要把它配置在Web应用的部署描述符web.xml文件中，配置如下：
 ```xml
-    <servlet>
+<servlet>
 	<!--Servlet名称-->
 	<servlet-name>dispatcher</servlet-name>
 	<!--使用哪个Servlet-->
@@ -333,7 +333,7 @@ MyBatis作为持久层框架，其主要思想是将程序中大量的SQL语句�
 ```java
 package com.valueplus.domain;
 
-public class User2 {
+public class User {
     private Integer id;
     private String name;
     private String sex;
@@ -365,7 +365,7 @@ public class User2 {
     }
     @Override
     public String toString() {
-        return "User2{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
