@@ -44,7 +44,7 @@ GitHub是世界上最大的Git Remote Repository的服务供应商，GitHub中�
 系统会显示该文件的具体内容，将内容全部复制出来。稍后会用到。
 
 #### GitHub
-[GitHub官方网站](https://github.com/)
+[GitHub官方网站](https://github.com/)<br/>
 在官方网站上注册一个GitHub的帐号，注册的时候需要填写用户名和有效的电子邮箱。注册之后可以通过用户名或者电子邮箱进行登陆。然后您需要将您的用户名或者电子邮箱发送到本文作者的邮箱中，作者会将您添加到公司的Organization中的Team下。GitHub随后会给您发送一封确认邮件，在邮件中点击链接即可加入Team。也可以在GitHub中的个人消息中心确认邀请。确认邀请之后登陆GitHub，点击右侧的"Your teams"下的"valueplus2/speclogger"进入ValuePlus Oragnization下的SpecLogger Team主页。可以浏览到该Team大部分的内容，包括该Team的Repository。点击上方"Repositories"查看该Team下所有的Repository，点击"valueplus2/toolsmgt-dev"进入工具管理系统的GitHub主页。在该主页的右侧可以看到一个"Clone or download"的按钮，点击该按钮后会显示当前项目的Git地址 
 
     git@github.com:valueplus2/toolsmgt-dev.git
@@ -66,7 +66,7 @@ GitHub是世界上最大的Git Remote Repository的服务供应商，GitHub中�
 主机:47.104.190.227 端口:1714 用户名:vp_dbadm 密码:Valuep_1234
 可利用命令行工具（如MySQL Utilities）或者图形化界面（如Navicat）连接操作数据库。
 命令行工具
-[MySQL Utilities下载地址](https://cdn.mysql.com//Downloads/MySQLGUITools/mysql-utilities-1.6.5-winx64.msi)
+[MySQL Utilities下载地址](https://cdn.mysql.com//Downloads/MySQLGUITools/mysql-utilities-1.6.5-winx64.msi)<br/>
 下载安装后运行cmd，浏览到安装目录下的MySQL Server 5.5\bin\目录下，键入以下命令： 
 
 > $ mysql -u vp_dbadm -h 47.104.190.227 -p -P 1714
@@ -122,7 +122,7 @@ Maven其实是一系列plugin(插件)的集合。每一个plugin包含一个或�
 [POM文件用户文档](https://maven.apache.org/pom.html)<br/>
 [Maven官方网站](https://maven.apache.org/)<br/>
 ### IntelliJ IDEA
-[Intellij IDEA官方下载地址](https://www.jetbrains.com/idea/download/#section=windows)
+[Intellij IDEA官方下载地址](https://www.jetbrains.com/idea/download/#section=windows)<br/>
 选择下载"Ultimate"版本，下载后安装时可选择默认插件配置即可。
 安装之后[点击此处](https://blog.csdn.net/qq_35246620/article/details/79050895)网址进行破解激活
 Intellij IDEA中的项目结构名称和Eclipse项目结构名称略有不同，大体的对应关系如下:
