@@ -141,3 +141,364 @@ Intellij IDEA中的项目结构名称和Eclipse项目结构名称略有不同，
 
 将项目git clone下来之后，打开Intellij IDEA，依次点击菜单栏"File"->"New"->"Project..."，在左侧栏选择"Empty Project"，点击下方按钮"Next"。在"Project Location"一栏的右侧点击"..."按钮选择Project的目录，浏览到git clone下目录"toolsmgt-dev\"，点击toolsmgt-dev目录后确定，然后点击下方"Finish"按钮完成Project的创建。此时在git clone的目录下创建了一个空的Intellij IDEA的Project，然后我们需要把Module添加到当前的空Project中。依次点击菜单栏"File"->"New"->"Module from Existing Sources..."，浏览到toolsmgt-dev\toolsmgt\，选择toolsmgt.iml文件确定即可。此时Intellij IDEA会自动扫描该目录下的文件。在Intellij IDEA中按下"Alt + 1"组合键或者点击左边栏中的"Project"打开Project窗口，右键选择"pom.xml"文件，点击"Add as Maven Project"将该项目识别为Maven项目。此时GitHub上面的项目已经成功导入并集成到Intellij IDEA的开发环境中。
 Intellij IDEA中已经集成了相关的Git, Maven的图形化界面与工具。因此，您既可以使用终端如cmd, bash也可以使用集成的图形化工具进行工作。
+### Web Dev. Framework 
+#### 轻量级Java EE框架的分层模型概述
+Domain Object层（领域对象） 此层以一系列的POJO（Plain Old Java Object，普通的java对象）组成，往往包含了各自所需的业务逻辑方法。
+DAO层（Data Access Object，数据访问层） 此层有一系列接口组成，接口中声明了对数据库的CRUD原子操作。
+Service层（业务逻辑层） 此层有一系列的业务逻辑对象组成，这些业务逻辑对象实现了系统所需要的业务逻辑方法。这些仅仅用于暴露Domain Object对象所实现的业务逻辑方法，也可能是依赖DAO组件实现的业务逻辑方法。
+Controller层（控制层） 此层有一系列控制器组成，这些控制器用于拦截用户请求，并调用业务逻辑组件和业务逻辑方法，处理用户请求，并根据处理结果向不同的表现层组件转发。 
+View层（表现层） 此层由一系列的JSP页面组成，负责收集用户请求，并显示处理结果。
+```text
+                                                      Persist
+                                         +------+      Data       +------------+
+                                         |  DB  |  +----------->  |   Domain   |
+      +-----------+                      |      |  <-----------+  |   Object   |
+      |   View    |                      +------+     Provide     +------------+
+      +-----------+                                    Data
+                                                                    +       ^
+        +       ^                                                   |       |
+        |       |                                               ORM |       | Acquire
+ Send   |       | Present                                           |       |  POJO
+Request |       |  Data                                             |       |
+        |       |                                                   |       |
+        |       |                                                   |       |
+        v       +                                                   v       +
+                                                          CRUD
+    +---------------+     Call       +--------------+   Operation  +-----------+
+    |      MVC      |  +--------->   |   Bussiness  |  +-------->  |    DAO    |
+    |   Controller  |  <---------+   |     Logic    |  <--------+  |           |
+    +---------------+  Implentation  +--------------+     Data     +-----------+
+                                                         Access
+```
+#### MVC思想概述
+MVC思想将一个应用分成Model（模型）、View（视图）、Controller（控制器）三部分。这三部分以最少的耦合协同作业，提高应用的可扩展性和可维护性。
+其中，Model由JavaBean担当，View由前端页面担当，Controller由Servlet担当，各个部分协调工作流程如下：
+```text
+   +-----------+
+   |  Browser  |
+   +-----------+
+
+        +  ^
+Request |  | Response           +--------------+
+        |  |           +------> |   JavaBean   |
+        v  +           |        +--------------+
+                       |
+   +------------+      | Call Model Method
+   |   Servlet  | +----+
+   +------------+
+
+          +              +------------+
+          +------------> |    View    |
+               Forward   +------------+
+               Request
+```
+可见，Servlet控制器是整个框架体系的核心，Spring MVC框架中，包含一个用于调度的Servlet-->DispatcherServlet,Spring MVC就是围绕这个核心展开，DispatcherServlet是Spring MVC是总导演，总策划，它负责截获请求并将其分派给相应的处理器。Spring MVC框架包含注解驱动控制器，请求及响应的信息处理、视图解析、本地化解析、上传文件解析、异常处理以及表单标签绑定等内容。
+#### DispatcherServlet的运行原理
+
+ 1. 浏览器请求提交至DispatcherServlet前端控制器
+ 2. DispatcherServlet控制器调用DefaultAnnotationHandlerMapping，以查找与请求地址相对应的控制器
+ 3. DefaultAnnotationHandlerMapping找到对应的控制器及其方法，并将结果返回给DispatcherServlet
+ 4. DispatcherServlet将请求传递至AnnotationMethodHandlerAdapter组件，以适配调用控制器的方法
+ 5. AnnotationMethodHandlerAdapter适配调用控制器的方法，适配内容包括方法的参数列表和返回值
+ 6. 控制器方法处理请求，并将结果返回至AnnotationMethodHandlerAdapter
+ 7. AnnotationMethodHandlerAdapter将返回结果封装到ModelAndView对象（包含了处理结果的视图和视图中要使用的数据），进而返回给DispatcherServlet
+ 8. DispatcherServlet基于ModelAndView对象调用ViewResolver，以查找指定的视图
+ 9. ViewResolver查找并确定视图，并返回给DispatcherServlet
+ 10. DispatcherServlet调度视图，视图负责将结果显示到客户端
+#### Spring MVC Web应用部署
+ 1. 使用DispatcherServlet需要把它配置在Web应用的部署描述符web.xml文件中，配置如下：
+```xml
+    <servlet>
+	<!--Servlet名称-->
+	<servlet-name>dispatcher</servlet-name>
+	<!--使用哪个Servlet-->
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	<!--加载Serlvet的优先级，如果是1，则再启动服务器时立即加载-->
+        <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+	<!--Servlet的拦截的请求路径，监听当前域的所有请求-->
+        <url-pattern>/</url-pattern>
+</servlet-mapping>
+```
+ 2. 配置统一网站字符集编码，解决中文乱码问题，此步也在web.xml文件中
+```xml
+<!-- 统一网站字符编码 -->
+ <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>    
+    <init-param>
+        <param-name>forceEncoding</param-name>
+        <param-value>true</param-value>
+    </init-param>
+    <init-param>
+        <param-name>encoding</param-name>
+        <param-value>UTF-8</param-value>
+    </init-param>
+ </filter>
+ <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+ </filter-mapping>
+```
+3.配置MVC核心配置文件，默认在WEB-INF下创建Spring XML文件，文件命名方式必须以[servlet-name]-servlet.xml的，servlet-name与web.xml中配置DispatcherServlet中的servlet-name值对应，这里，文件名应取为dispatcher-servlet.xml,之后配置核心文件内容：
+```xml
+<!-- 配置包扫描，会扫描该包下的所有类文件，将包含MVC注解的类全部注册为控制器 -->
+<context:component-scan base-package="所需扫描包" use-default-filters="false">
+      <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+</context:component-scan>
+
+<!-- 指定Spring容器对Spring MVC相关组件的注解进行注册，相当于配置HandlerMapping和HandlerAdapter，进行该项配置，Spring就会使用系统默认的处理器和适配器 -->
+<mvc:annotation-driven/>
+
+<!-- 放行静态资源(img,css...),交给默认的tomcat去处理,如果前端控制器配置的是/，这个地方必须配置 -->
+<mvc:default-servlet-handler/>
+
+<!-- 定义视图解析器  -->
+<bean id="defaultViewResolver" class='org.springframework.web.servlet.view.InternalResourceViewResolver'>
+      <!-- 配置前缀和后缀：控制器返回的url会经过视图解析器解析最终的url是：前缀+url+后缀 -->
+      <property name="prefix" value="/" />
+      <property name="suffix" value=".jsp" />
+</bean>
+```
+4.编写控制器
+```java
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller //Spring MVC检测到该注解，将此类注册为控制器
+@Scope(value="prototype") //该类的作用域，此处为原型模式，每次调用此类都会创建该类的一个实例，常见的模式还有singleton-->单例模式
+@RequestMapping("/springmvc") //请求路径，如果标注在类的上方，则类中所有请求方法的路径都要基于此路径
+public class SimpleController {
+　　@RequestMapping(value = "/test",method = RequestMethod.POST) //该请求方法的请求路径，完整的请求路径为/springmvc/test
+　　public String test(Model model) {
+　　　　model.addAttribute("message", "Hello world！"); //model或ModelAndView，都可以用于存储业务信息
+        //返回的视图名称，经过视图解析器的处理，拼接前缀后缀形成完整的相应路径，按照上面配置的视图解析器，最终将请求转发到WebContent目录下的HelloWorld.jsp页面
+        return "HelloWorld";
+　　}
+}
+```
+HelloWorld.jsp页面：
+```jsp
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+  <head>
+    <title>MVC测试</title>
+  </head>
+  <body>
+	<!--使用EL表达式或JSTL标签库可以获取到Model中存储的业务数据-->
+	${requestScope.message }
+  </body>
+</html>
+```
+地址栏中在项目的根路径下拼接/spring/test，直接转发到HelloWorld.jsp页面，并且页面上将显示"Hello World!"信息。
+
+在实际开发中，每个Controller中的每个方法都属于一个独立的控制器，他们分别调用各自的业务层逻辑代码，为视图层提供数据。此处只是为MVC的基本使用做了简单介绍，但MVC能做的远不止这些，有关其他注解请自行查阅联系，包括：
+|||
+|--|--|
+|@ResponseBody|解决json格式数据的请求相应处理|
+|@RequestParam|解决表单传参的参数对应问题|
+|@PathVariable|解析占位符|
+|@SessionAttributes|存储一次单独会话信息|
+|@ModelAttribute|将请求参数绑定到Model对象|
+#### Mybatis简介
+什么是ORM？
+ORM全称Object/Relation Mapping,即对象/关系数据库映射。ORM框架提供了一系类规范，用于解决OOP和RDB发展不同步的中间解决方案，简单而言，ORM框架就是讨论如何将数据库的表结构数据映射称Java中的一个普通的Java文件，并用Java的面向对象操作方法操作数据库的CRUD；整个映射的关系对应为：
+|  |  |
+|--|--|
+|表结构|Java类|
+|表字段|Java类成员变量|
+|表记录|Java类实例|
+何为持久层框架？
+持久，即存储数据的持久性，数据的存储往往不直接存储在内存，而是将数据存储在硬盘、磁带等媒体介质，需要时再从这些介质中调用。持久层可以看做数据库、硬盘这种可以持久存储数据的媒体介质；持久化就是讨论如何将数据存储到这些介质。Java 程序员为了操作数据库，最开始是使用JDBC来进行的，但是这种方式开发效率低，要写一堆重复代码，加上关系数据库和对象本身存在所谓的阻抗不匹配，所以导致项目冗杂、难以维护等问题，于是持久层框架产生，就是为了解决如何用面向对象的方法操纵数据库，并且可以将面向对象操作后的结果持久化存储到这些持久化介质的问题。
+MyBatis是一个支持普通SQL查询、存储过程和高级映射的优秀持久层框架。MyBatis去掉了几乎所有的JDBC代码和参数的手工设置以及对结果集的检测封装。MyBatis可以使用简单的XML或注解进行配置和原始映射，已将接口和Java的POJO映射成数据库的记录。
+MyBatis作为持久层框架，其主要思想是将程序中大量的SQL语句剥离出来，配置在配置文件中，以实现SQL的灵活配置。这样做的好处是将SQL与程序代码分离，做到可以在不修改程序代码的情况下，直接在配置文件中修改SQL。
+
+配置使用MyBatis
+1.MyBatis的数据库操作
+首先创建数据库mybatis，在数据库中创建tb_user表，表信息如下：
+||||
+|--|--|--|
+|ID|INT|自增|
+|NAME|VARCHAR|DEFAULT NULL|
+|SEX|CHAR|DEFAULT NULL|
+|AGE|INT|DEFAULT NULL|
+通过MyBatis，所有对数据库的CRUD操作都将转换成对POJO的操作，下面是tb_user表映射的POJO对象结构：
+```java
+package com.valueplus.domain;
+
+public class User2 {
+    private Integer id;
+    private String name;
+    private String sex;
+    private Integer age;
+
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getSex() {
+        return sex;
+    }
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+    public Integer getAge() {
+        return age;
+    }
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+    @Override
+    public String toString() {
+        return "User2{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+```
+注意：类成员变量的get、set方法必须全部实现，MyBatis对数据库的字段到POJO的成员变量的映射正是通过get、set方法实现的。
+对于MyBatis，现在还不能实现从数据库到java对象的映射，MyBatis通过XML文件去完成持久化类和数据库表之间的映射关系的。
+
+MyBatis核心配置文件mybatis-config.xml的部署：
+```xml
+<configuration>
+  <!--配置默认的环境信息，default中指定了那个数据库生效-->
+  <environments default="development">
+    <!--配置数据库的连接信息，id唯一指示这个数据库，可以有多个environment标签，表明有多个数据库，与environments标签的default配合使用-->
+    <environment id="development">
+      <!--配置事务管理器-->
+      <transactionManager type="JDBC"/>
+      <!--配置连接池信息-->
+      <dataSource type="POOLED">
+        <!--加载驱动-->
+        <property name="driver" value="${driver}"/>
+        <!--数据库连接信息-->
+        <property name="url" value="${url}"/>
+        <!--用户名和密码-->
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <!--加载映射文件-->
+  <mappers>
+    <mapper resource="org/mybatis/example/UserMapper.xml"/>
+  </mappers>
+</configuration>
+```
+核心配置文件定义了一些数据库连接方面的基本信息，另外，数据库表到POJO持久化对象的映射也存储在单独的XML文件中，并且在核心配置文件中指明该映射文件的路径。
+
+映射文件的配置
+映射文件存储的是对数据库的原子操作和原子操作的结果集映射，MyBatis正是通过映射文件实现数据库表到POJO持久化对象的映射的，映射文件所有内容都是基于mapper标签下实现的。
+```xml
+<mapper namespace="com.valueplus.dao">
+     <select id="load" resultType="com.valueplus.domain.User">
+        select * from tb_user where id = 1;
+    </select>
+</mapper>
+```
+其中 mapper的namespace属性值唯一指定该mapper文件，该映射文件存在一个select标签，对应一次数据库查询操作,其中id唯一指定了这次操作的名称，resultType指定了数据库表需要映射的持久化类的全路径，标签中嵌套的是SQL语句。
+
+有了这些就具备了持久化的条件，接下来就是如何持久化。
+每个基于 MyBatis 的应用都是以一个 SqlSessionFactory 的实例为中心的。SqlSessionFactory 的实例可以通过 SqlSessionFactoryBuilder 获得。而 SqlSessionFactoryBuilder 则可以从 XML 配置文件或一个预先定制的 Configuration 的实例构建出 SqlSessionFactory 的实例:
+```java
+public class MyBatisTest {
+   public static void main(String args[]) throws Exception {
+       //读取mybatis核心配置文件
+       String resource = "org/mybatis/example/mybatis-config.xml";
+       InputStream inputStream = Resources.getResourceAsStream(resource);
+       //通过xml核心配置文件创建SqlSessionFactory类的实例
+       SqlSessionFactory  sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+       //创建sqlSession实例
+       SqlSession sqlSession = sqlSessionFactory.openSession();
+       //创建User对象，以namespace+id的形式找到对应的SQL语句
+　　   User user = sqlSession.selectOne("com.valueplus.dao.load");
+       //查询完毕，完毕sqlSession实例，释放资源
+　　   sqlSession.close();
+   }
+}
+```
+以上是Mybatis的简单使用，但是MyBatis的内容远不止这些，剩余的部分请自行查阅学习，包括：
+1.MyBatis的结果集映射-->resultMap的使用，包括一对一，一对多，多对多的数据结果集的封装
+2.MyBatis处理不同参数的处理方式，包括参数是单个基本数据类型的情况、参数是多个基本数据类型的情况、参数是map的情况、参数是POJO的情况
+3.动态SQL语句查询，包括sql标签、where标签、set标签等的使用。
+#### Spring 容器框架概述
+
+Spring是IOC和AOP的容器框架。
+
+何为IOC？
+IoC（Inversion of Control）,控制反转，即把创建对象的权利交给框架,是框架的重要特征。传统的编程开发中，程序员想要获取一个类的实例，需要用new手动创建一个对象的实例，IoC的理念就是，把这步操作交给Spring框架来做，让框架控制对象的生命周期，程序员主要关注这个对象怎么用就可以，即所谓的“拿来主义”，拿过来就用，而不用自己去创建出来。那么怎么才能实现“拿来主义”呢？Spring并不智能，我们需要手动配置文件，通过XML或注解的方式将某些类标注为Spring的bean，当程序员需要一个类的实例，Spring会扫描这些bean，找到符合的bean，生成注入类的实例并返回。程序员对创建对象实例的控制权转交给容器去做，即控制反转。
+
+何为依赖注入？
+DI（Dependency Injection）依赖注入，IOC容器需要为程序提供依赖对象，即在某段程序中需要依赖某个类的实例来实现，IOC的理念是让框架来实现对类的实例化，具体的实现过程就是通过注入来实现的，简单的说，程序员在一段程序代码中只声明了一个对象而并没有手动创建实例，只有一副空壳，当别处代码调用到该段程序时，需要对这个类进行实例化操作，此时作为对象管理核心的Spring，会找到该类的描述，通过反射机制生成一个类的对象，注入到之前的空壳中。
+
+何为AOP？
+AOP（Aspect Oriented Programming），面向切面编程，AOP是OOP的延续，用于程序内部的代码完善功能。OOP一个最大的特征是多态，而继承是多态的一个重要的体现。一个类通过继承父类，既能使用父类所有的方法实现，还可以添加父类没有的属于自己特定的方法。OOP的多态是基于类这个层面的，但是有些时候，这种纵向的特性并不足以解决所有问题；比如，在一个系统中，想就用户的操作日志进行记录，对所有的用户操作都要记录生成日志，用OOP很难实现，因为用户具体的操作并不是在类的层次上进行，而是在类中某个具体的方法上进行的，而这种方法很多，并且分布在各个类中，如，用户登陆的操作、用户删除某条数据的操作，都不在一个类中实现，这种跨类的、面向方法内部的编程技巧，无法用OOP的理念解决，但这是AOP要实现的目标。
+
+AOP并没有改变原有程序的代码结构，而是将一些额外的代码包在原有代码之前、之后等，起到对原有代码的增强修饰作用，AOP有很多专业术语：连接点、切点、增强、织入、代理、切面，关于这些术语的解释在此不再赘述，请自行查阅解决。
+#### Spring + MyBatis + SpringMVC整合
+Spring MVC是Spring的子项目，Spring为Spring MVC提供了良好的支持，但是Spring并没有自己的ORM框架，需要通过配置实现，MyBatis提供了spring-mybatis工具包，用于实现Spring对MyBatis的整合，用Spring框架进行整合，可以省掉原来的mybatis-config.xml的配置，程序员只需要专注于Mapper映射文件的编写即可。
+
+配置Spring核心文件-->在WEB-INF下创建Spring XML applicationContext.xml
+```xml
+<!--扫描包下的java文件，所有有注解的类都会被注册为spring的bean-->
+    <context:component-scan base-package="com.valueplus"/>
+
+    <!--加载数据源参数-->
+    <context:property-override location="classpath:db.properties"/>
+
+    <!--配置c3p0数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" />
+
+    <!--整合mybatis和spring的bean-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" p:dataSource-ref="dataSource">
+        <property name="mapperLocations" value="classpath*:com/valueplus/mapper/*Mapper.xml"/>
+    </bean>
+
+    <!--配置接口自动注入，类名小写-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.**.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+```
+db.properties文件存储的是一些数据库描述信息：
+```
+dataSource.driverClass=com.mysql.jdbc.Driver
+dataSource.jdbcUrl=jdbc:mysql://47.104.190.227:1714/mybatis
+dataSource.user=^p_dbadm
+dataSource.password=Valuep_1234
+dataSource.maxPoolSize=20
+dataSource.maxIdleTime=1000
+dataSource.minPoolSize=6
+dataSource.initialPoolSize=5
+```
+配置数据源信息，即相当于配置了mybatis核心配置文件中的数据库描述信息，SqlSessionFactoryBean是Spring用于注入生成SqlSessionFactory实例的bean，而其中的property属性指定了mapper映射文件的位置，这样，通过Spring就实现了mybatis核心配置文件的所有配置。当想进行持久化操作时，Spring也可以通过注入方式，生成SqlSessionFactory实例。
+
+然后在web.xml文件中添加对applicationContext.xml的引用：
+```xml
+<context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml,
+        /WEB-INF/spring-cache.xml
+        </param-value>
+ </context-param>
+ <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+ </listener>
+```
+此外，还需要Spring MVC的引入和相关配置的实现，具体实现可以回顾之前的教程。至此，Spring + SpringMVC + MyBatis (SSM)的简易框架配置完毕，简单的项目结构详见GIT中的项目。
