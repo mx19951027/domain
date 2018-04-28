@@ -66,7 +66,7 @@ GitHub是世界上最大的Git Remote Repository的服务供应商，GitHub中�
 其余的Git命令可自行查看官方文档或第三方教程学习。
  ### Database
 主机:47.104.190.227 端口:1714 用户名:vp_dbadm 密码:Valuep_1234
-可利用命令行工具（如MySQL Utilities）或者图形化界面（如Navicat）连接操作数据库。
+可利用命令行工具（如MySQL Utilities）或者图形化界面（如Navicat）连接操作数据库。<br/>
 命令行工具
 [MySQL Utilities下载地址](https://cdn.mysql.com//Downloads/MySQLGUITools/mysql-utilities-1.6.5-winx64.msi)<br/>
 下载安装后运行cmd，浏览到安装目录下的MySQL Server 5.5\bin\目录下，键入以下命令： 
@@ -74,6 +74,12 @@ GitHub是世界上最大的Git Remote Repository的服务供应商，GitHub中�
 > $ mysql -u vp_dbadm -h 47.104.190.227 -p -P 1714
 
 "-u" 参数指定登陆用户名，"-h" 参数指定主机地址，"-p" 参数指示用需要密码登陆，"-P" 参数指定端口号。回车后输入密码即可登陆成功。
+图形化工具（推荐）
+下载Navicat后依据图形化界面操作配置数据库连接：
+主机:47.104.190.227
+端口:1714
+用户名:vp_dbadm
+密码:Valuep_1234
 ### Maven
 Maven是一个Java项目自动化构建工具。它能够负责管理项目开发过程中所有的资源。它支持很多种构建类型，并且对于每一种支持的构建类型已经定义好了一组构建规则和工具集。Maven还能够对依赖进行全面与细致的管理，避免了开发过程中依赖资源及其相互之间管理的混乱。另外，Maven还支持各种文档信息的发布，包括构建过程中的各种输出，javadoc，产品文档等。
 在Maven中，存在一个"Convention over configuration"("约定大于配置")设计理念，该设计理念旨在减少开发者在复杂程度较高的项目开发过程中由配置信息产生的工作量。所有的默认配置信息都存储在一个文件中，当用户根据自身情况需要更改部分配置信息的时候仅需要创建一个新的文件,仅写入需要修改的信息即可。程序读取配置信息时仅读取用户修改的信息，其他配置信息直接从默认配置信息文件中inherit(继承)。如下图所示:
