@@ -68,12 +68,13 @@ GitHub是世界上最大的Git Remote Repository的服务供应商，GitHub中�
 主机:47.104.190.227 端口:1714 用户名:vp_dbadm 密码:Valuep_1234
 可利用命令行工具（如MySQL Utilities）或者图形化界面（如Navicat）连接操作数据库。<br/>
 #### 命令行工具
-<!--[MySQL Utilities下载地址](https://cdn.mysql.com//Downloads/MySQLGUITools/mysql-utilities-1.6.5-winx64.msi)<br/>-->
-下载安装后运行cmd，浏览到安装目录下的MySQL Server 5.5\bin\目录下，键入以下命令： 
+[MySQL Community Server下载地址](https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11-winx64.zip)<br/>
+下载解压后运行cmd，浏览到解压目录下的bin\目录下，键入以下命令： 
 
 > $ mysql -u vp_dbadm -h 47.104.190.227 -p -P 1714
 
 "-u" 参数指定登陆用户名，"-h" 参数指定主机地址，"-p" 参数指示用需要密码登陆，"-P" 参数指定端口号。回车后输入密码即可登陆成功。<br/>
+*当前版本(ver.8.0)的MySQL在Windows环境下的安装并不需要通过exe或msi文件，仅需要解压即可。MySQL的命令行工具(MySQL Command Line Client)包含在zip文件中，直接解压出来就可以使用，并不会更改当前系统环境*
 #### 图形化工具（推荐）
 下载Navicat后依据图形化界面操作配置数据库连接：
 主机:47.104.190.227
