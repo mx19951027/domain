@@ -68,7 +68,7 @@ GitHub是世界上最大的Git Remote Repository的服务供应商，GitHub中�
 主机:47.104.190.227 端口:1714 用户名:vp_dbadm 密码:Valuep_1234
 可利用命令行工具（如MySQL Utilities）或者图形化界面（如Navicat）连接操作数据库。<br/>
 #### 命令行工具
-[MySQL Utilities下载地址](https://cdn.mysql.com//Downloads/MySQLGUITools/mysql-utilities-1.6.5-winx64.msi)<br/>
+<!--[MySQL Utilities下载地址](https://cdn.mysql.com//Downloads/MySQLGUITools/mysql-utilities-1.6.5-winx64.msi)<br/>-->
 下载安装后运行cmd，浏览到安装目录下的MySQL Server 5.5\bin\目录下，键入以下命令： 
 
 > $ mysql -u vp_dbadm -h 47.104.190.227 -p -P 1714
