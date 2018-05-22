@@ -24,6 +24,11 @@ public class LoginController {
         return "redirect:login.jsp";
     }
 
+    @RequestMapping(value = "/demo", method = RequestMethod.GET)
+    public String toDemo() {
+        return "demo";
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String doLogin(@RequestParam("username") String username, Model model) {
         User loginUser = userService.login(username);
