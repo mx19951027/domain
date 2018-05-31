@@ -10,7 +10,7 @@ $(function() {
         // 判断屏幕属于大还是小
         var isSmallScreen = windowWidth < 768;
         // 根据大小为界面上的每一张轮播图设置背景
-        $('#main_carousel > .carousel-inner > .item').each(function(i, item) {
+        $('#main_carousel .carousel-inner > .item').each(function(i, item) {
             // 因为拿到是DOM对象 需要转换
             var $item = $(item);
             var imgSrc = isSmallScreen ? $item.data('image-xs') : $item.data('image-lg');
