@@ -25,4 +25,9 @@ $(function() {
         });
     }
     $(window).on('resize', resize).trigger('resize');
+
+    $("#tool_in_storage").on("click",function(){
+        var id = $(this).prop("id");
+        $("#content").load('inc/'+id);
+    });
 });
