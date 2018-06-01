@@ -1,36 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+       <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+       <!--xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"-->
+       <!--xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">-->
 
-    <!--mybatis:scan会将包下所有的借口当做mapper配置，之后可以自动引入mapper类-->
-    <!--<mybatis:scan base-package="com.valueplus.ormappers"/>-->
+    <!--&lt;!&ndash;mybatis:scan会将包下所有的借口当做mapper配置，之后可以自动引入mapper类&ndash;&gt;-->
+    <!--&lt;!&ndash;<mybatis:scan base-package="com.valueplus.ormappers"/>&ndash;&gt;-->
 
-    <!--扫描包下的java文件，所有有注解的类都会被注册为spring的bean-->
-    <context:component-scan base-package="com.valueplus.toolsmgt"/>
+    <!--&lt;!&ndash;扫描包下的java文件，所有有注解的类都会被注册为spring的bean&ndash;&gt;-->
+    <!--<context:component-scan base-package="com.valueplus.toolsmgt"/>-->
 
-    <!--加载数据源参数-->
-    <context:property-override location="classpath:properties/db.properties"/>
+    <!--&lt;!&ndash;加载数据源参数&ndash;&gt;-->
+    <!--<context:property-override location="classpath:properties/db.properties"/>-->
 
-    <!--配置c3p0数据源-->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"/>
+    <!--&lt;!&ndash;配置c3p0数据源&ndash;&gt;-->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"/>-->
 
-    <!--整合mybatis和spring的bean-->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" p:dataSource-ref="dataSource">
-        <!--<property name="mapperLocations" value="classpath*:com/valueplus/toolsmgt/ormappers/*Mapper.xml"/>-->
-        <property name="mapperLocations" value="classpath:ormappers/*Mapper.xml"/>
-    </bean>
+    <!--&lt;!&ndash;整合mybatis和spring的bean&ndash;&gt;-->
+    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" p:dataSource-ref="dataSource">-->
+        <!--&lt;!&ndash;<property name="mapperLocations" value="classpath*:com/valueplus/toolsmgt/ormappers/*Mapper.xml"/>&ndash;&gt;-->
+        <!--<property name="mapperLocations" value="classpath:ormappers/*Mapper.xml"/>-->
+    <!--</bean>-->
 
-    <!--配置接口自动注入，类名小写-->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.**.dao"/>
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-    </bean>
+    <!--&lt;!&ndash;配置接口自动注入，类名小写&ndash;&gt;-->
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+        <!--<property name="basePackage" value="com.**.dao"/>-->
+        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
+    <!--</bean>-->
 
-    <!--JDBC事务管理器-->
-    <!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="dataSource"/>-->
+    <!--&lt;!&ndash;JDBC事务管理器&ndash;&gt;-->
+    <!--&lt;!&ndash;<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="dataSource"/>&ndash;&gt;-->
 
-    <!--启动支持注解方式的事务管理-->
-    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
-</beans>
+    <!--&lt;!&ndash;启动支持注解方式的事务管理&ndash;&gt;-->
+    <!--&lt;!&ndash;<tx:annotation-driven transaction-manager="transactionManager"/>&ndash;&gt;-->
+<!--</beans>-->

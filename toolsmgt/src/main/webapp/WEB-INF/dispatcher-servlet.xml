@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+       <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+       <!--xmlns:context="http://www.springframework.org/schema/context"-->
+       <!--xmlns:mvc="http://www.springframework.org/schema/mvc"-->
+       <!--xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">-->
 
-    <!--自动扫描该包，将所有带@Controller注解的类注册为控制器-->
-    <context:component-scan base-package="com.valueplus.toolsmgt.controller"/>
+    <!--&lt;!&ndash;自动扫描该包，将所有带@Controller注解的类注册为控制器&ndash;&gt;-->
+    <!--<context:component-scan base-package="com.valueplus.toolsmgt.controller"/>-->
 
-    <!--设置默认的配置方案-->
-    <mvc:annotation-driven/>
-    <!--过滤静态资源-->
-    <mvc:resources mapping="/css/**" location="/resources/css/" />
-    <mvc:resources mapping="/fonts/**" location="/resources/fonts/" />
-    <mvc:resources mapping="/js/**" location="/resources/js/" />
-    <mvc:resources mapping="/images/**" location="/resources/images/" />
-    <mvc:resources mapping="/lib/**" location="/resources/lib/" />
-    <!--Configure the View Resolver-->
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix">
-            <value>/WEB-INF/</value>
-        </property>
-        <property name="suffix">
-            <value>.jsp</value>
-        </property>
-    </bean>
-</beans>
+    <!--&lt;!&ndash;设置默认的配置方案&ndash;&gt;-->
+    <!--<mvc:annotation-driven/>-->
+    <!--&lt;!&ndash;过滤静态资源&ndash;&gt;-->
+    <!--<mvc:resources mapping="/css/**" location="/resources/css/" />-->
+    <!--<mvc:resources mapping="/fonts/**" location="/resources/fonts/" />-->
+    <!--<mvc:resources mapping="/js/**" location="/resources/js/" />-->
+    <!--<mvc:resources mapping="/images/**" location="/resources/images/" />-->
+    <!--<mvc:resources mapping="/lib/**" location="/resources/lib/" />-->
+    <!--&lt;!&ndash;Configure the View Resolver&ndash;&gt;-->
+    <!--<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix">-->
+            <!--<value>/WEB-INF/</value>-->
+        <!--</property>-->
+        <!--<property name="suffix">-->
+            <!--<value>.jsp</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+<!--</beans>-->
