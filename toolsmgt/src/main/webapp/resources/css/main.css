@@ -1,0 +1,229 @@
+body {
+    background-color: #1b1b1b;
+    color: #fff;
+}
+li {
+    list-style: none;
+}
+a:hover ,
+a:active ,
+a:visited ,
+a:focus {
+    text-decoration: none!important;
+}
+#header > .topbar > .container {
+    height: 40px;
+    line-height: 40px;
+}
+#header > .navbar .navbar-header ,
+#header > .navbar #nav_list {
+    background: linear-gradient(#cadb57,#94c92c);
+}
+#header > .navbar .input-group {
+    margin-top: 8px;
+}
+.form-control:focus {
+    border-color: #EC6901;
+}
+/*轮播图部分*/
+#main_carousel {
+    background-color: #1b1b1b;
+}
+#main_carousel  .carousel-inner > .item {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+@media (min-width: 768px) {
+    #main_carousel .carousel-inner > .item {
+        height: 410px;
+    }
+}
+#main_carousel .carousel-inner > .item > img {
+    width: 100%;
+}
+.carousel-control .icon-prev, .carousel-control .glyphicon-chevron-left {
+    margin-left: 15px;
+}
+.carousel-control .icon-prev, .carousel-control .glyphicon-chevron-right {
+    margin-right: 15px;
+}
+
+/*新闻和通知的标签卡*/
+.main-content > .container > div {
+    padding: 0;
+}
+.main-content > .container .news-nav ,
+.main-content > .container .notice-nav {
+    height: 40px;
+    line-height: 40px;
+}
+/*新闻和通知的主体内容*/
+.main-content .main-body > .body-news ,
+.main-content .main-body > .body-notice {
+    height: 400px;
+    background-color: hotpink;
+}
+.main-content .main-body > .body-news {
+    border-right: 1px solid #1b1b1b;
+}
+/*改动部分bootstrap.css中的样式*/
+.btn-valueplus-topbar {
+    color: #333;
+    background-color: #EC6901;
+}
+.btn-valueplus-topbar:focus,
+.btn-valueplus-topbar.focus {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #8c8c8c;
+}
+.btn-valueplus-topbar:hover {
+    color: #EC6901;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.btn-valueplus-topbar:active,
+.btn-valueplus-topbar.active,
+.open > .dropdown-toggle.btn-valueplus-topbar {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.btn-valueplus-topbar:active:hover,
+.btn-valueplus-topbar.active:hover,
+.open > .dropdown-toggle.btn-valueplus-topbar:hover,
+.btn-valueplus-topbar:active:focus,
+.btn-valueplus-topbar.active:focus,
+.open > .dropdown-toggle.btn-valueplus-topbar:focus,
+.btn-valueplus-topbar:active.focus,
+.btn-valueplus-topbar.active.focus,
+.open > .dropdown-toggle.btn-valueplus-topbar.focus {
+    color: #333;
+    background-color: #d4d4d4;
+    border-color: #8c8c8c;
+}
+.btn-valueplus-topbar:active,
+.btn-valueplus-topbar.active,
+.open > .dropdown-toggle.btn-valueplus-topbar {
+    background-image: none;
+}
+.btn-valueplus-topbar.disabled:hover,
+.btn-valueplus-topbar[disabled]:hover,
+fieldset[disabled] .btn-valueplus-topbar:hover,
+.btn-valueplus-topbar.disabled:focus,
+.btn-valueplus-topbar[disabled]:focus,
+fieldset[disabled] .btn-valueplus-topbar:focus,
+.btn-valueplus-topbar.disabled.focus,
+.btn-valueplus-topbar[disabled].focus,
+fieldset[disabled] .btn-valueplus-topbar.focus {
+    background-color: #fff;
+    border-color: #ccc;
+}
+.btn-valueplus-topbar .badge {
+    color: #fff;
+    background-color: #333;
+}
+.btn-valueplus-link {
+    color: #333;
+}
+.navbar-valueplus {
+    background-color: #1b1b1b;
+    margin-bottom: 0;
+}
+.navbar-valueplus .navbar-brand {
+    color: #777;
+}
+.navbar-valueplus .navbar-brand:hover,
+.navbar-valueplus .navbar-brand:focus {
+    color: #5e5e5e;
+    background-color: transparent;
+}
+.navbar-valueplus .navbar-text {
+    color: #777;
+}
+.navbar-valueplus .navbar-nav > li {
+    padding: 0 15px;
+}
+.navbar-valueplus .navbar-nav > li > a {
+    color: #333;
+    display: inline-block;
+}
+.navbar-valueplus .navbar-nav > li > a:hover,
+.navbar-valueplus .navbar-nav > li > a:focus {
+    color: #111;
+    background-color: transparent;
+}
+.navbar-valueplus .navbar-nav > .active > a,
+.navbar-valueplus .navbar-nav > .active > a:hover,
+.navbar-valueplus .navbar-nav > .active > a:focus {
+    color: #111;
+    background-color: transparent;
+}
+.navbar-valueplus .navbar-nav > .disabled > a,
+.navbar-valueplus .navbar-nav > .disabled > a:hover,
+.navbar-valueplus .navbar-nav > .disabled > a:focus {
+    color: #ccc;
+    background-color: transparent;
+}
+.navbar-valueplus .navbar-toggle {
+    border-color: #ddd;
+}
+.navbar-valueplus .navbar-toggle:hover,
+.navbar-valueplus .navbar-toggle:focus {
+    background-color: #ddd;
+}
+.navbar-valueplus .navbar-toggle .icon-bar {
+    background-color: #888;
+}
+.navbar-valueplus .navbar-collapse,
+.navbar-valueplus .navbar-form {
+    border-color: #e7e7e7;
+}
+.navbar-valueplus .navbar-nav > .open > a,
+.navbar-valueplus .navbar-nav > .open > a:hover,
+.navbar-valueplus .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+}
+@media (max-width: 767px) {
+    .navbar-valueplus .navbar-nav .open .dropdown-menu > li > a {
+        color: #777;
+    }
+    .navbar-valueplus .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-valueplus .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333;
+        background-color: transparent;
+    }
+    .navbar-valueplus .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-valueplus .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-valueplus .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #555;
+        background-color: #e7e7e7;
+    }
+    .navbar-valueplus .navbar-nav .open .dropdown-menu > .disabled > a,
+    .navbar-valueplus .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+    .navbar-valueplus .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+        color: #ccc;
+        background-color: transparent;
+    }
+}
+.navbar-valueplus .navbar-link {
+    color: #777;
+}
+.navbar-valueplus .navbar-link:hover {
+    color: #333;
+}
+.navbar-valueplus .btn-link {
+    color: #777;
+}
+.navbar-valueplus .btn-link:hover,
+.navbar-valueplus .btn-link:focus {
+    color: #333;
+}
+.navbar-valueplus .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-valueplus .btn-link:hover,
+.navbar-valueplus .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-valueplus .btn-link:focus {
+    color: #ccc;
+}
