@@ -37,6 +37,7 @@ public class WebContextConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/js/**").addResourceLocations("/resources/js/");
         registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
         registry.addResourceHandler("/lib/**").addResourceLocations("/resources/lib/");
+        registry.addResourceHandler("/content/**").addResourceLocations("/WEB-INF/content/");
     }
 
     @Override
