@@ -1,4 +1,4 @@
-package com.valueplus.toolsmgt.domain;
+package com.valueplus.toolsmgt.web.domain;
 
 public class User {
     private String userName;

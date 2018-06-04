@@ -1,6 +1,6 @@
-package com.valueplus.toolsmgt.dao;
+package com.valueplus.toolsmgt.web.dao;
 
-import com.valueplus.toolsmgt.domain.User;
+import com.valueplus.toolsmgt.web.domain.User;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserDao {

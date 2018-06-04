@@ -1,9 +1,9 @@
-package com.valueplus.toolsmgt.service.impl;
+package com.valueplus.toolsmgt.web.service.impl;
 
 
-import com.valueplus.toolsmgt.dao.UserDao;
-import com.valueplus.toolsmgt.domain.User;
-import com.valueplus.toolsmgt.service.UserService;
+import com.valueplus.toolsmgt.web.dao.UserDao;
+import com.valueplus.toolsmgt.web.domain.User;
+import com.valueplus.toolsmgt.web.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
-package com.valueplus.toolsmgt.controller;
+package com.valueplus.toolsmgt.web.controller;
 
-import com.valueplus.toolsmgt.domain.User;
-import com.valueplus.toolsmgt.service.UserService;
+import com.valueplus.toolsmgt.web.domain.User;
+import com.valueplus.toolsmgt.web.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
