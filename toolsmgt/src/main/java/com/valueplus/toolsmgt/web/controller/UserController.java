@@ -3,10 +3,7 @@ package com.valueplus.toolsmgt.web.controller;
 import com.valueplus.toolsmgt.web.domain.User;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,10 +16,8 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public Object login(@ModelAttribute User user) {
-        logger.debug("+++++++++++++++++++++++++++++++++++++>>>>>>>>>>>");
-        logger.debug(user);
-        logger.debug("+++++++++++++++++++++++++++++++++++++>>>>>>>>>>>");
+    public Object login(@RequestBody User user) {
+        System.out.print(user);
         Map<String, Integer> map = new HashMap<>();
         map.put("status", 1);
         return map;

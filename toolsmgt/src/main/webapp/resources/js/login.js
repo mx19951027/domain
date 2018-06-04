@@ -1,11 +1,18 @@
 app.controller('LoginController',['$scope','$state','$http',function ($scope, $state, $http) {
+    $scope.user = {};
     $scope.login = function(){
-        console.log($scope.user);
-        console.log(angular.toJson($scope.user));
-        console.log($('.login .form-horizontal').serializeArray());
-        $http.post('user/login',$('.login .form-horizontal').serializeArray(),function (data) {
-            alert(data.status);
-            $state.go('main');
+        var jso = angular.toJson($scope.user);
+        console.log(jso);
+        console.log(typeof jso == 'object')
+        $http({
+            method : "POST",
+            url : "user/login",
+            data : angular.toJson($scope.user),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (value) {
+
         })
     }
 }]);
