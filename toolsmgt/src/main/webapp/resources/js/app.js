@@ -10,12 +10,17 @@ var app = angular.module("tools-app", ['ui.router'])
     .config(['$stateProvider', '$urlRouterProvider',
         function($stateProvider, $urlRouterProvider){
             // 指定默认重定向到/index地址
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('login');
             $stateProvider
             // 如果用户请求main路径，使用main.html作为模板
                 .state('main', {
                     url: '/main',
-                    templateUrl: '/content/main.html'
+                    templateUrl: 'content/main.html'
+                })
+                .state('login', {
+                    url : '/login',
+                    controller : 'LoginController',
+                    templateUrl: 'content/login.html'
                 })
         }]);
 app.controller("MainController", angular.noop);
