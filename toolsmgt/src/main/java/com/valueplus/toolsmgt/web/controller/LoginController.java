@@ -29,7 +29,7 @@ public class LoginController {
         return "demo";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+/*    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String doLogin(@RequestParam("username") String username, Model model) {
         User loginUser = userService.login(username);
         logger.debug("user------>" + loginUser);
@@ -38,5 +38,5 @@ public class LoginController {
             return "index";
         }
         return "redirect:login";
-    }
+    }*/
 }
