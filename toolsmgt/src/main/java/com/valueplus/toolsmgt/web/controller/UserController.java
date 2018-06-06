@@ -21,7 +21,7 @@ public class UserController {
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public Object login(@RequestBody User user) {
         User result = userService.login(user);
-        System.out.print(result);
+        logger.debug(result);
         Map<String, Integer> map = new HashMap<>();
         map.put("status", 1);
         return map;

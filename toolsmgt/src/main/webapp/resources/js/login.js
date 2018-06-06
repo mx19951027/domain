@@ -12,7 +12,8 @@ app.controller('LoginController',['$scope','$state','$http',function ($scope, $s
                 'Content-Type': 'application/json'
             }
         }).then(function (value) {
-
+            alert(value.status);
+            $state.go('main');
         })
     }
 }]);

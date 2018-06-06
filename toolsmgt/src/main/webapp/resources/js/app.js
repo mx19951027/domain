@@ -21,6 +21,6 @@ var app = angular.module("tools-app", ['ui.router'])
                     url : '/login',
                     controller : 'LoginController',
                     templateUrl: 'content/login.html'
-                })
+                });
         }]);
 app.controller("MainController", angular.noop);
