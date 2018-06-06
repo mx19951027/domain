@@ -2,19 +2,18 @@ package com.valueplus.toolsmgt.web.controller;
 
 import com.valueplus.toolsmgt.web.domain.User;
 import com.valueplus.toolsmgt.web.service.UserService;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @SessionAttributes(value = {"user"}, types = {User.class})
 public class LoginController {
-    private static Logger logger = Logger.getLogger(LoginController.class);
+    private static Logger logger = LogManager.getLogger(LoginController.class);
 
     @Autowired
     private UserService userService;
