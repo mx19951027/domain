@@ -35,7 +35,7 @@ public class RootContextConfig {
         } catch (PropertyVetoException e) {
             return null;
         }
-        cpds.setJdbcUrl("jdbc:mysql://47.104.190.227:1714/testdb");
+        cpds.setJdbcUrl("jdbc:mysql://47.104.190.227:1714/toolsmgt_db");
         cpds.setUser("vp_dbadm");
         cpds.setPassword("Valuep_1234");
         cpds.setMaxPoolSize(20);

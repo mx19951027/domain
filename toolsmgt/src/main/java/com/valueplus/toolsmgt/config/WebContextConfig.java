@@ -13,6 +13,7 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
@@ -31,8 +32,14 @@ public class WebContextConfig implements WebMvcConfigurer, ApplicationContextAwa
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
-
-    @Bean
+   @Bean
+    public ViewResolver viewResolver() {
+       InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+       resolver.setPrefix("/WEB-INF/templates/");
+       resolver.setSuffix(".jsp");
+       return resolver;
+    }
+/*    @Bean
     public ViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
@@ -55,7 +62,7 @@ public class WebContextConfig implements WebMvcConfigurer, ApplicationContextAwa
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
         return templateResolver;
-    }
+    }*/
 
     @Bean
     public MultipartResolver multipartResolver() {

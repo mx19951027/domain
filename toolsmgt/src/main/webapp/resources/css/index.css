@@ -1,0 +1,51 @@
+#index_header > .navbar {
+    border-bottom: solid 4px #e7e7e7;
+}
+#index_body {
+    width: 100%;
+    height: 100%;
+
+}
+#index_body  > .col-md-2 {
+    height: 100%;
+    border-right: solid 4px #e7e7e7;
+}
+#index_body > .col-md-2 > .btn {
+    margin: 5px 0;
+    display: inline-block;
+    width: 100%;
+}
+/*左侧导航栏样式*/
+
+/*右侧样式*/
+#index_body > .col-md-10 > .breadcrumb {
+    margin-top: 5px;
+}
+
+#index_body > .col-md-10 > .breadcrumb a {
+    color: #333;
+}
+
+#query {
+    margin-top: 10px;
+}
+#query .form-group {
+    text-align: center;
+}
+#query .form-group > label {
+    line-height: 30px;
+}
+#query .input-group {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: transparent;
+}
+#content > .table a{
+    display: inline-block;
+    margin: 0 4px;
+}
+.pagination {
+    margin: 5px 0;
+}

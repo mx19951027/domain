@@ -7,7 +7,7 @@
     <display-name>Archetype Created Web Application</display-name>
     <welcome-file-list>
         <welcome-file>
-            /WEB-INF/index.html
+            /WEB-INF/login.jsp
         </welcome-file>
     </welcome-file-list>
     <!--&lt;!&ndash;Specify the Spring Framework Config File&ndash;&gt;-->
