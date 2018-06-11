@@ -1,24 +1,42 @@
-<div class="login panel panel-default col-md-4 col-md-offset-4">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>单页面</title>
+    <!--<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon"/>-->
+    <link rel="stylesheet" th:href="@{lib/bootstrap/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{css/index.css}">
+    <!--[if lt IE 9]>
+    <script th:src = "@{lib/html5shiv/html5shiv.min.js}"></script>
+    <script th:src="@{lib/respond/respond.min.js}"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="login panel panel-default col-md-4 col-md-offset-4 mMiddle">
     <div class="panel-heading">用户登录</div>
     <div class="panel-body">
-        <form class="form-horizontal">
+        <form class="form-horizontal" th:action="@{index}" method="post">
             <div class="form-group">
                 <label for="username" class="col-md-3 control-label">用户名</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" id="username" name="username" ng-model="user.username" placeholder="用户名">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
                 </div>
             </div>
             <div class="form-group">
                 <label for="password" class="col-md-3 control-label">密码</label>
                 <div class="col-md-9">
-                    <input type="password" class="form-control" id="password" name="password" ng-model="user.password" placeholder="密码">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密码">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-offset-3 col-md-9">
-                    <button type="submit" class="btn btn-default pull-right" ng-click="login()">登录</button>
+                    <button type="submit" class="btn btn-default pull-right">登录</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
+</body>
+</html>

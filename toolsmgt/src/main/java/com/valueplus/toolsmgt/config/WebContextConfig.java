@@ -32,17 +32,18 @@ public class WebContextConfig implements WebMvcConfigurer, ApplicationContextAwa
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
-   @Bean
+/*   @Bean
     public ViewResolver viewResolver() {
        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
        resolver.setPrefix("/WEB-INF/templates/");
        resolver.setSuffix(".jsp");
        return resolver;
-    }
-/*    @Bean
+    }*/
+    @Bean
     public ViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
+        viewResolver.setCharacterEncoding("utf-8");
         return viewResolver;
     }
 
@@ -58,11 +59,12 @@ public class WebContextConfig implements WebMvcConfigurer, ApplicationContextAwa
     public ITemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/templates");
+        templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCharacterEncoding("utf-8");
         return templateResolver;
-    }*/
+    }
 
     @Bean
     public MultipartResolver multipartResolver() {
@@ -76,7 +78,7 @@ public class WebContextConfig implements WebMvcConfigurer, ApplicationContextAwa
         registry.addResourceHandler("/js/**").addResourceLocations("/resources/js/");
         registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
         registry.addResourceHandler("/lib/**").addResourceLocations("/resources/lib/");
-        registry.addResourceHandler("/content/**").addResourceLocations("/WEB-INF/content/");
+        registry.addResourceHandler("/templates/**").addResourceLocations("/WEB-INF/templates/");
     }
 
     @Override

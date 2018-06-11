@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,11 +23,14 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @RequestMapping(value = {"","login"}, method = RequestMethod.GET)
+    public String toLogin() {
+        return "login";
+    }
+
     @RequestMapping(value = "index", method = RequestMethod.POST)
-    public String login(User user, Model model) {
-        User result = userService.login(user);
-        logger.debug(result);
-        model.addAttribute("user",result);
+    public String login(User user, HttpSession session) {
+        session.setAttribute("user",userService.login(user));
         return "index";
     }
 }

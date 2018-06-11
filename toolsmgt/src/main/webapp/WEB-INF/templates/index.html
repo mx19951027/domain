@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>单页面</title>
+    <!--<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon"/>-->
+    <link rel="stylesheet" th:href="@{lib/bootstrap/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{lib/bootstrap/css/bootstrap-datetimepicker.css}">
+    <link rel="stylesheet" th:href="@{css/base.css}">
+    <link rel="stylesheet" th:href="@{css/index.css}">
+    <!--[if lt IE 9]>
+    <script th:src = "@{lib/html5shiv/html5shiv.min.js}"></script>
+    <script th:src="@{lib/respond/respond.min.js}"></script>
+    <![endif]-->
+</head>
+<body>
+<header id="index_header">
+    <nav class="navbar navbar-default navbar-static-top margin0 border0">
+        <div class="container">
+            <div class="navbar-header">
+                <button id="btn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav_list" aria-expanded="false">
+                    <span class="sr-only">切换菜单</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <i class="icon-icon">LOGO</i>
+                    <i class="icon-logo"></i>
+                </a>
+            </div>
+            <div id="nav_list" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="active"><a href="#">欢迎登录，<span th:text="${session.user.username}"></span></a></li>
+                    <li><a href="#">消息中心 <i class="glyphicon glyphicon-volume-up"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<section id="index_body">
+    <div class="col-md-2">
+        <button type="button" class="btn btn-default f14px">功能菜单</button>
+        <div id="panel_list">
+            <div class="panel-group margin0" role="tablist">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="inventory_mgt">
+                        <h4 class="panel-title">
+                            <a class="collapsed f12px" role="button" data-toggle="collapse" href="#inventory_mgt_details" aria-expanded="false" aria-controls="inventory_mgt_details">
+                                入库出库
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="inventory_mgt_details" class="panel-collapse collapse" role="tabpanel" aria-labelledby="inventory_mgt" aria-expanded="false" style="height: 0px;">
+                        <ul class="list-group">
+                            <li class="list-group-item f12px" id="addTools">入库审请</li>
+                            <li class="list-group-item f12px">出库申请</li>
+                            <li class="list-group-item f12px">待审批查询</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-group margin0" role="tablist">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="rent_mgt">
+                        <h4 class="panel-title">
+                            <a class="collapsed f12px" role="button" data-toggle="collapse" href="#rent_mgt_details" aria-expanded="false" aria-controls="rent_mgt_details">
+                                借出归还
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="rent_mgt_details" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rent_mgt" aria-expanded="false" style="height: 0px;">
+                        <ul class="list-group">
+                            <li class="list-group-item f12px">借出审请</li>
+                            <li class="list-group-item f12px">归还申请</li>
+                            <li class="list-group-item f12px">待审批查询</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-group margin0" role="tablist">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="maintenance_mgt">
+                        <h4 class="panel-title">
+                            <a class="collapsed f12px" role="button" data-toggle="collapse" href="#maintenance_mgt_details" aria-expanded="false" aria-controls="maintenance_mgt_details">
+                                保养维修
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="maintenance_mgt_details" class="panel-collapse collapse" role="tabpanel" aria-labelledby="maintenance_mgt" aria-expanded="false" style="height: 0px;">
+                        <ul class="list-group">
+                            <li class="list-group-item f12px">维修保养入库</li>
+                            <li class="list-group-item f12px">维修保养出库</li>
+                            <li class="list-group-item f12px">待审批查询</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10" id="include_part"></div>
+</section>
+<script type="text/javascript" th:src="@{lib/jquery/jquery-3.3.1.js}"></script>
+<script type="text/javascript" th:src="@{lib/bootstrap/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{lib/bootstrap/js/bootstrap-datetimepicker.js}"></script>
+<script type="text/javascript" th:src="@{lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js}" charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{js/common.js}"></script>
+
+<script>
+    $('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        format : 'yyyy-mm-dd hh:ii',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+        startDate : new Date((new Date()).getFullYear(),0,1)
+    });
+    $("#addTools").on("click",function(){
+        $("#include_part").include("templates/addTools.html");
+    })
+</script>
+</body>
+</html>
