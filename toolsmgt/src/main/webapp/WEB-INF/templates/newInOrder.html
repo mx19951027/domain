@@ -1,0 +1,53 @@
+<div id="operation">
+    <a class="btn btn-default f12px" ui-sref="newInOrder"><i class="glyphicon glyphicon-plus"></i> 添加物资</a>
+    <a class="btn btn-default f12px" ui-sref="newInOrder"><i class="glyphicon glyphicon-trash"></i> 删除物资</a>
+    <a class="btn btn-default f12px" ui-sref="newInOrder"><i class="glyphicon glyphicon-ok"></i> 提交</a>
+</div>
+<div class="panel panel-default mT10">
+    <div class="panel-heading">
+        <h3 class="panel-title f14px fB">任务单信息</h3>
+    </div>
+    <div class="panel-body">
+        <form action="#" id="query" class="form-horizontal">
+            <div class="form-group col-md-4">
+                <label for="orderno" class="col-md-3 control-label fBN padding0">任务单号</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="orderno" name="orderno">
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="orderType" class="col-md-3 control-label fBN padding0">任务类型</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="orderType" name="orderType">
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="apart" class="col-md-3 control-label fBN padding0">部门</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="apart" name="apart">
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="proposer" class="col-md-3 control-label fBN padding0">申请人</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="proposer" name="proposer">
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="holdApart" class="col-md-3 control-label fBN padding0">保管部门</label>
+                <div class="col-md-9">
+                    <select name="holdApart" id="holdApart" class="form-control">
+                        <option value="">研发部门</option>
+                        <option value="">售后服务部门</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="description" class="col-md-3 control-label fBN padding0">单据描述</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="description" name="description">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

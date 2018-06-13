@@ -23,14 +23,14 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = {"","login"}, method = RequestMethod.GET)
+/*    @RequestMapping(value = {"","login"}, method = RequestMethod.GET)
     public String toLogin() {
-        return "login";
-    }
+        return "index";
+    }*/
 
-    @RequestMapping(value = "index", method = RequestMethod.POST)
+/*    @RequestMapping(value = "index", method = RequestMethod.POST)
     public String login(User user, HttpSession session) {
         session.setAttribute("user",userService.login(user));
         return "index";
-    }
+    }*/
 }

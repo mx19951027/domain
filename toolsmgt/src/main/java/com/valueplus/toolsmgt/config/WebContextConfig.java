@@ -36,10 +36,10 @@ public class WebContextConfig implements WebMvcConfigurer, ApplicationContextAwa
     public ViewResolver viewResolver() {
        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
        resolver.setPrefix("/WEB-INF/templates/");
-       resolver.setSuffix(".jsp");
+       resolver.setSuffix(".html");
        return resolver;
     }*/
-    @Bean
+/*    @Bean
     public ViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
@@ -64,7 +64,7 @@ public class WebContextConfig implements WebMvcConfigurer, ApplicationContextAwa
         templateResolver.setTemplateMode(TemplateMode.HTML);
         templateResolver.setCharacterEncoding("utf-8");
         return templateResolver;
-    }
+    }*/
 
     @Bean
     public MultipartResolver multipartResolver() {

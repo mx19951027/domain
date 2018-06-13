@@ -6,6 +6,7 @@ table,td,tr,th{font-size:12px;}
 li{list-style-type:none;}
 img{vertical-align:top;border:0;}
 ol,ul {list-style:none;}
+li:hover{cursor: pointer;}
 h1,h2,h3,h4,h5,h6 {font-size:12px; font-weight:normal;}
 address,cite,code,em,th {font-weight:normal; font-style:normal;}
 .fB{font-weight:bold;}
@@ -19,5 +20,6 @@ a {color:#333; text-decoration:none;}
 a:visited,a:hover,a:active {text-decoration:none;}
 .padding0{padding:0;}
 .margin0{margin:0;}
+.mT10{margin-top: 10px;}
 .border0{border:0;}
 .mCenter{position: relative;left: 50%;transform: translateX(-50%)}
