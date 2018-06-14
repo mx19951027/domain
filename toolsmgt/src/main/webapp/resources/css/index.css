@@ -21,16 +21,25 @@
     display: inline-block;
     width: 100%;
 }
+
 /*左侧导航栏样式*/
 
 /*右侧样式*/
-
-#index_body > .col-md-10 > .breadcrumb {
-    margin-top: 5px;
+#index_body  > .col-md-10 {
+    padding-top: 55px;
+}
+#index_body  > .col-md-10 > .breadcrumb {
+    margin-top: -50px;
 }
 
 #index_body > .col-md-10 > .breadcrumb a {
     color: #333;
+}
+#content{
+    overflow: auto;
+}
+.tree-scroll {
+    overflow: auto;
 }
 
 #query {

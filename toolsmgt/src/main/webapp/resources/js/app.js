@@ -12,12 +12,10 @@ var app = angular.module("tools-app", ['ui.router'])
             // 指定默认重定向到/index地址
             $urlRouterProvider.otherwise('addTools');
             $stateProvider
-            // 如果用户请求main路径，使用main.html作为模板
                 .state('toolsInApp', {
                     url: '/toolsInApp',
                     templateUrl: 'templates/toolsApplication.html'
                 })
-                // 如果用户请求/listCategories路径，使用ListCategoriesController控制器和对应模板
                 .state('toolsOutApp', {
                     url: '/toolsOutApp',
                     controller: '',
@@ -43,16 +41,30 @@ var app = angular.module("tools-app", ['ui.router'])
                     controller: '',
                     templateUrl: 'templates/toolsApplication.html'
                 })
+                .state('scrapApp', {
+                    url: '/scrapApp',
+                    controller: '',
+                    templateUrl: 'templates/toolsApplication.html'
+                })
+                .state('destroyApp', {
+                    url: '/destroyApp',
+                    controller: '',
+                    templateUrl: 'templates/toolsApplication.html'
+                })
                 .state('newInOrder', {
                     url: '/newInOrder',
                     controller: '',
                     templateUrl: 'templates/newInOrder.html'
                 })
-                // 如果用户请求/saleBook路径，使用SaleBookController控制器和对应模板
-                .state('saleBook', {
-                    url: '/saleBook',
+                .state('varietyMgt', {
+                    url: '/varietyMgt',
+                    controller: '',
+                    templateUrl: 'templates/varietyMgt.html'
+                })
+                .state('unApprovalQuery', {
+                    url: '/unApprovalQuery',
                     controller: 'SaleBookController',
-                    templateUrl: 'res/saleBook.html'
+                    templateUrl: 'templates/unApprovalQuery.html'
                 });
         }]);
 app.controller("MainController", angular.noop);

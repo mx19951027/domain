@@ -1,6 +1,6 @@
 <div id="operation">
-    <a class="btn btn-default f12px" ui-sref="newInOrder"><i class="glyphicon glyphicon-plus"></i> 添加物资</a>
-    <a class="btn btn-default f12px" ui-sref="newInOrder"><i class="glyphicon glyphicon-trash"></i> 删除物资</a>
+    <a class="btn btn-default f12px" data-toggle="modal" data-target="#addToolsModal"><i class="glyphicon glyphicon-plus"></i> 添加工具</a>
+    <a class="btn btn-default f12px" ui-sref="newInOrder"><i class="glyphicon glyphicon-trash"></i> 删除工具</a>
     <a class="btn btn-default f12px" ui-sref="newInOrder"><i class="glyphicon glyphicon-ok"></i> 提交</a>
 </div>
 <div class="panel panel-default mT10">
@@ -48,6 +48,95 @@
                     <input type="text" class="form-control" id="description" name="description">
                 </div>
             </div>
+            <div class="form-group col-md-4">
+                <label for="approvalLevel" class="col-md-3 control-label fBN padding0">审批级数</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="approvalLevel" name="approvalLevel">
+                </div>
+            </div>
+            <div class="form-group col-md-4"></div>
+            <div class="form-group col-md-4">
+                <label for="auditor" class="col-md-3 control-label fBN padding0">审批人</label>
+                <div class="col-md-9">
+                    <select name="auditor" id="auditor" class="form-control">
+                        <option value="">甲</option>
+                        <option value="">乙</option>
+                        <option value="">丙</option>
+                        <option value="">丁</option>
+                    </select>
+                </div>
+            </div>
         </form>
+        <div class="col-md-12">
+        <table class="table table-bordered table-hover margin0">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>选择框</th>
+                    <th>物资名称</th>
+                    <th>规格型号</th>
+                    <th>申请数量</th>
+                    <th>单位</th>
+                    <th>金额</th>
+                    <th>预购日期</th>
+                    <th>供货单位</th>
+                    <th>器材来源</th>
+                    <th>采购方式</th>
+                    <th>经济来源</th>
+                    <th>电子验收报告编号</th>
+                    <th>会计凭证号</th>
+                    <th>项目名称</th>
+                    <th>WBS元素号</th>
+                    <th>WBS元素描述</th>
+                    <th>组件数量</th>
+                    <th>体积</th>
+                    <th>重量</th>
+                    <th>材质</th>
+                    <th>颜色</th>
+                </tr>
+            </thead>
+        </table>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="addToolsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title fB f14px" id="myModalLabel">请选择工具</h4>
+            </div>
+            <div class="modal-body row">
+                <div class="col-md-5 h100P tree-scroll" style="height: 300px;">
+                    <div id="tree"></div>
+                </div>
+                <div class="col-md-7">
+                    <a class="btn btn-default f12px"><i class="glyphicon glyphicon-plus"></i> 添加</a>
+                    <a class="btn btn-default f12px"><i class="glyphicon glyphicon-trash"></i> 删除</a>
+                    <table class="table table-bordered table-hover mT10">
+                        <thead>
+                            <tr><th>工具</th><th>数量</th><th>单位</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr class="success">
+                                <td>三合板</td>
+                                <td><input type="text" class="" value="4"></td>
+                                <td>片</td>
+                            </tr>
+                            <tr>
+                                <td>钢材</td>
+                                <td><input type="text" class="" value="2"></td>
+                                <td>吨</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">添加</button>
+            </div>
+        </div>
     </div>
 </div>

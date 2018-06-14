@@ -1,28 +1,35 @@
-<div>
+<div id="content">
     <div>
-        <a class="btn btn-default f12px" ui-sref="newInOrder"><i class="glyphicon glyphicon-plus"></i> 新建入库单</a>
         <a class="btn btn-default f12px" ui-sref="#"><i class="glyphicon glyphicon-search"></i> 查询</a>
     </div>
     <form action="#" id="query" class="form-horizontal">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
             <label for="orderno" class="col-md-3 control-label fBN padding0">任务单号</label>
             <div class="col-md-9">
                 <input type="text" class="form-control" id="orderno" name="orderno">
             </div>
         </div>
-        <div class="form-group col-md-6">
-            <label for="status" class="col-md-3 control-label fBN padding0">状态</label>
+        <div class="form-group col-md-4">
+            <label for="orderType" class="col-md-3 control-label fBN padding0">任务类型</label>
             <div class="col-md-9">
-                <select name="status" id="status" class="form-control">
-                    <option value="">全部</option>
-                    <option value="">未完成</option>
-                    <option value="">完成</option>
-                    <option value="">一级审批</option>
-                    <option value="">二级审批</option>
+                <select name="orderType" id="orderType" class="form-control">
+                    <option value="">入库</option>
+                    <option value="">出库</option>
                 </select>
             </div>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
+            <label for="proposer" class="col-md-3 control-label fBN padding0">申请人</label>
+            <div class="col-md-9">
+                <select name="proposer" id="proposer" class="form-control">
+                    <option value="">甲</option>
+                    <option value="">乙</option>
+                    <option value="">丙</option>
+                    <option value="">丁</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
             <label for="timefrom" class="col-md-3 control-label fBN padding0">申请时间</label>
             <div class="input-group date form_datetime col-md-9" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
                 <input class="form-control" size="16" type="text" value="" id="timefrom" name="timefrom" readonly>
@@ -31,7 +38,8 @@
             </div>
             <input type="hidden" id="dtp_input1" value="" /><br/>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4"></div>
+        <div class="form-group col-md-4">
             <label for="timeto" class="col-md-3 control-label fBN padding0">到</label>
             <div class="input-group date form_datetime col-md-9" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
                 <input class="form-control" size="16" type="text" id="timeto" name="timeto" readonly>

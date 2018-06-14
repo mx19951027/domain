@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>单页面</title>
+    <title>维修工具智能化管理系统</title>
     <!--<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon"/>-->
 <!--    <link rel="stylesheet" th:href="@{lib/bootstrap/css/bootstrap.css}">
     <link rel="stylesheet" th:href="@{lib/bootstrap/css/bootstrap-datetimepicker.css}">
@@ -34,7 +34,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <i class="icon-icon">LOGO</i>
+                    <i class="icon-icon">维修工具智能化管理系统</i>
                     <i class="icon-logo"></i>
                 </a>
             </div>
@@ -64,7 +64,7 @@
                         <ul class="list-group">
                             <li class="list-group-item f12px"><a ui-sref="toolsInApp">入库审请</a></li>
                             <li class="list-group-item f12px"><a ui-sref="toolsOutApp">出库申请</a></li>
-                            <li class="list-group-item f12px"><a ui-sref="">待审批查询</a></li>
+                            <li class="list-group-item f12px"><a ui-sref="unApprovalQuery">待审批查询</a></li>
                         </ul>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                         <ul class="list-group">
                             <li class="list-group-item f12px"><a ui-sref="toolsLendApp">借出审请</a></li>
                             <li class="list-group-item f12px"><a ui-sref="toolsReturnApp">归还申请</a></li>
-                            <li class="list-group-item f12px">待审批查询</li>
+                            <li class="list-group-item f12px"><a ui-sref="unApprovalQuery">待审批查询</a></li>
                         </ul>
                     </div>
                 </div>
@@ -100,19 +100,73 @@
                         <ul class="list-group">
                             <li class="list-group-item f12px"><a ui-sref="maintainInApp">维修保养入库</a></li>
                             <li class="list-group-item f12px"><a ui-sref="maintainOutApp">维修保养出库</a></li>
-                            <li class="list-group-item f12px">待审批查询</li>
+                            <li class="list-group-item f12px"><a ui-sref="unApprovalQuery">待审批查询</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-group margin0" role="tablist">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="scrap_mgt">
+                        <h4 class="panel-title">
+                            <a class="collapsed f12px" role="button" data-toggle="collapse" href="#scrap_mgt_details" aria-expanded="false" aria-controls="maintenance_mgt_details">
+                                报废销毁
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="scrap_mgt_details" class="panel-collapse collapse" role="tabpanel" aria-labelledby="scrap_mgt" aria-expanded="false" style="height: 0px;">
+                        <ul class="list-group">
+                            <li class="list-group-item f12px"><a ui-sref="scrapApp">报废申请</a></li>
+                            <li class="list-group-item f12px"><a ui-sref="destroyApp">销毁申请</a></li>
+                            <li class="list-group-item f12px"><a ui-sref="unApprovalQuery">待审批查询</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-group margin0" role="tablist">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="store_mgt">
+                        <h4 class="panel-title">
+                            <a class="collapsed f12px" role="button" data-toggle="collapse" href="#store_mgt_details" aria-expanded="false" aria-controls="maintenance_mgt_details">
+                                仓库盘点
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="store_mgt_details" class="panel-collapse collapse" role="tabpanel" aria-labelledby="store_mgt" aria-expanded="false" style="height: 0px;">
+                        <ul class="list-group">
+                            <li class="list-group-item f12px"><a ui-sref="scrapApp">盘点申请</a></li>
+                            <li class="list-group-item f12px"><a ui-sref="destroyApp">盘点执行</a></li>
+                            <li class="list-group-item f12px"><a ui-sref="unApprovalQuery">盘点结果差异分析</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-group margin0" role="tablist">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="data_mgt">
+                        <h4 class="panel-title">
+                            <a class="collapsed f12px" role="button" data-toggle="collapse" href="#data_mgt_details" aria-expanded="false" aria-controls="maintenance_mgt_details">
+                                基础数据
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="data_mgt_details" class="panel-collapse collapse" role="tabpanel" aria-labelledby="data_mgt" aria-expanded="false" style="height: 0px;">
+                        <ul class="list-group">
+                            <li class="list-group-item f12px"><a ui-sref="varietyMgt">类别管理</a></li>
+                            <li class="list-group-item f12px"><a ui-sref="destroyApp">档案管理</a></li>
+                            <li class="list-group-item f12px"><a ui-sref="unApprovalQuery">仓库管理</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10 h100P">
         <ol class="breadcrumb col-md-12">
             <li><a href="#">入库出库</a></li>
             <li class="active"><a href="#">入库申请</a></li>
         </ol>
-        <div ui-view=""></div>
+        <div ui-view="" class="h100P" id="content"></div>
     </div>
 </section>
 <!--<script type="text/javascript" th:src="@{lib/jquery/jquery-3.3.1.js}"></script>
@@ -123,6 +177,7 @@
 <script type="text/javascript" src="lib/jquery/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/bootstrap-treeview.js"></script>
 <script type="text/javascript" src="lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script type="text/javascript" src="js/app.js"></script>
 
@@ -142,7 +197,61 @@
                 startDate : new Date((new Date()).getFullYear(),0,1)
             });
         })
-
+        function getTree() {
+            var tree = [
+                {
+                    text: "档案类别",
+                    nodes: [
+                        {
+                            text: "生成原材料",
+                            nodes: [
+                                {
+                                    text: "木材",
+                                    nodes: [
+                                        {
+                                            text: "三合板"
+                                        },
+                                        {
+                                            text: "木板"
+                                        }
+                                    ]
+                                },
+                                {
+                                    text: "钢材"
+                                }
+                            ]
+                        },
+                        {
+                            text: "设备",
+                            nodes: [
+                                {
+                                    text: "检测设备",
+                                    nodes: [
+                                        {
+                                            text: "仪器仪表",
+                                            nodes: [
+                                                {text:"光谱仪"},{text:"硫酸仪器"},{text:"三坐标"},{text:"拉力机"}
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    text: "办公设备",
+                                    nodes: [
+                                        {text:"笔记本"},{text:"台式计算机"},{text:"显示器"},{text:"打印机"},{text:"服务器"}
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ];
+            return tree;
+        }
+        function treeSet(){
+            $('#tree').treeview({data: getTree()});
+        }
+        treeSet();
     })
 </script>
 </body>
