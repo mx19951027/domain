@@ -22,9 +22,6 @@ public class Role_assign {
 
     @Override
     public String toString() {
-        return "Role_assign{" +
-                "user_id=" + user_id +
-                ", role_id=" + role_id +
-                '}';
+        return String.format("Role_assign{user_id:%d,role_id:%s}",user_id,role_id);
     }
 }

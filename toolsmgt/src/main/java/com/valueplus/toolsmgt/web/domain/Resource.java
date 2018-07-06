@@ -31,10 +31,6 @@ public class Resource {
 
     @Override
     public String toString() {
-        return "Resource{" +
-                "id=" + id +
-                ", key='" + key + '\'' +
-                ", value='" + value + '\'' +
-                '}';
+        return String.format("Resource{id:%d,key:%s,value:%s}",id,key,value);
     }
 }

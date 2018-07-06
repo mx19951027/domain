@@ -40,11 +40,6 @@ public class Dept {
 
     @Override
     public String toString() {
-        return "Dept{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", leader='" + leader + '\'' +
-                '}';
+        return String.format("Dept{id:%d,code:%s,name:%s,leader:%s}",id,code,name,leader);
     }
 }

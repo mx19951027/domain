@@ -40,11 +40,6 @@ public class Firm {
 
     @Override
     public String toString() {
-        return "Firm{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                '}';
+        return String.format("Firm{id:%d,code:%s,name:%s,type:%s}",id,code,name,type);
     }
 }

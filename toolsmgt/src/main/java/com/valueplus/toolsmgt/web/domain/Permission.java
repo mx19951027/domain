@@ -31,10 +31,6 @@ public class Permission {
 
     @Override
     public String toString() {
-        return "Permission{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        return String.format("Permission{id:%d,code:%s,name:%s}",id,code,name);
     }
 }
