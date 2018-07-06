@@ -58,7 +58,7 @@ var app = angular.module("tools-app", ['ui.router'])
                 })
                 .state('varietyMgt', {
                     url: '/varietyMgt',
-                    controller: '',
+                    controller: 'TreeController',
                     templateUrl: 'templates/varietyMgt.html'
                 })
                 .state('unApprovalQuery', {
